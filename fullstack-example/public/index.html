@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">        
+        <script>
+            fetch("http://localhost:8000/pizza_menu")
+                .then(response => {
+                    // Logic for when the call succeeds
+                    // response is what was returned
+
+
+                    if (response.ok) {
+                        // Returns a JSON formatted result of our request
+                        response.json().then(pizzas => {
+
+                            pizzas.forEach(pizza => {
+                                const listItem = document.createElement("li")
+                                const name = document.createTextNode(pizza.name)
+                                listItem.appendChild(name)
+                                document.getElementById("pizza-menu").appendChild(listItem)
+                            })
+
+                        })
+                    }
+                })
+                .catch(err => {
+                    // Logic for when this call fails
+                })
+        </script>
+    </head>
+    <body>
+        <header>
+            <img src="./assets/bizza-logo.png" alt="bepi's bizza!">
+        </header>
+        <div id="menu-container">
+            <h1>These are your bizzas breggkkgh</h1>
+            <ul id="pizza-menu">
+
+            </ul>
+        </div>
+    </body>        
+</html>
